@@ -52,6 +52,12 @@ docker run -it -p 1935:1935 -e CLOUDFLARE_KEY="<key>" thiagoeolima/nginx-rtmps
 docker run -it -p 1935:1935 -e TWITCH_URL="rtmp://<url>" -e TWITCH_KEY="<key>" thiagoeolima/nginx-rtmps
 ```
 
+* Kick:
+
+```bash
+docker run -it -p 1935:1935 -e KICK_KEY="<key>" thiagoeolima/nginx-rtmps
+```
+
 * OBS
 
 ```bash
@@ -91,7 +97,7 @@ rtmp://localhost:1935/instagram
 If something is not working you can check the logs of the container with:
 
 ```bash
-docker logs nginx-rtmp
+docker logs nginx-rtmps
 ```
 
 ## Extending
@@ -120,18 +126,29 @@ rtmp {
         application live {
             live on;
             record off;
-	    #push rtmp://a.rtmp.youtube.com/live2/<key>;
-	    #push rtmp://127.0.0.1:19350/rtmp/<key>;
-	    #push rtmp://127.0.0.1:19352/live/<key>;
+
+        #-YouTube
+        #push rtmp://a.rtmp.youtube.com/live2/<key>;
+        #-Facebook;
+        #push rtmp://127.0.0.1:19350/rtmp/<key>;
+        #-Instagram;
+        #push rtmp://127.0.0.1:19351/rtmp/<key>;
+        #-Cloudflare
+        #push rtmp://127.0.0.1:19352/live/<key>;
+        #-Kick
+        #push rtmp://127.0.0.1:19353/kick/<key>;
         }
         
         application instagram {
             live on;
             record off;
+            
+            #-Instagram;
             #push rtmp://127.0.0.1:19351/rtmp/<key>;
         }
 
     }
 
 }
+
 ```
