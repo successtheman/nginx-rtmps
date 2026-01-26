@@ -71,6 +71,9 @@ COPY stunnel/cloudflare.conf /etc/stunnel/conf.d/cloudflare.conf
 #Kick Stunnel Port 19353
 COPY stunnel/kick.conf /etc/stunnel/conf.d/kick.conf
 
+#Streamplace Stunnel Port 19354
+COPY stunnel/streamplace.conf /etc/stunnel/conf.d/streamplace.conf
+
 #Youtube
 ENV YOUTUBE_URL rtmp://a.rtmp.youtube.com/live2/
 ENV YOUTUBE_KEY ""
@@ -94,6 +97,10 @@ ENV TWITCH_KEY ""
 #Kick
 ENV KICK_URL rtmp://127.0.0.1:19353/kick/
 ENV KICK_KEY ""
+
+#Streamplace
+ENV STREAMPLACE_URL rtmp://127.0.0.1:19354/live/
+ENV STREAMPLACE_KEY ""
 
 ENV DEBUG ""
 
