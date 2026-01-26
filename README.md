@@ -58,6 +58,12 @@ docker run -it -p 1935:1935 -e TWITCH_URL="rtmp://<url>" -e TWITCH_KEY="<key>" t
 docker run -it -p 1935:1935 -e KICK_KEY="<key>" thiagoeolima/nginx-rtmps
 ```
 
+* Streamplace:
+
+```bash
+docker run -it -p 1935:1935 -e STREAMPLACE_KEY="<key>" thiagoeolima/nginx-rtmps
+```
+
 * OBS
 
 ```bash
@@ -137,6 +143,8 @@ rtmp {
         #push rtmp://127.0.0.1:19352/live/<key>;
         #-Kick
         #push rtmp://127.0.0.1:19353/kick/<key>;
+        #-Streamplace
+        #push rtmp://127.0.0.1:19354/live/<key>;
         }
         
         application instagram {
