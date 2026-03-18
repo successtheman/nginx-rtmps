@@ -54,6 +54,14 @@ else
 	sed -i 's|#kick| |g' $NGINX_TEMPLATE
 fi
 
+if [ -n "${STREAMPLACE_KEY}" ]; then
+	echo "Streamplace activate."
+	sed -i 's|#streamplace|push '"$STREAMPLACE_URL"'${STREAMPLACE_KEY};|g' $NGINX_TEMPLATE
+	ENV_OK=1
+else
+	sed -i 's|#streamplace| |g' $NGINX_TEMPLATE
+fi
+
 if [ $ENV_OK -eq 1 ]; then
     envsubst < $NGINX_TEMPLATE > $NGINX_CONF
 else

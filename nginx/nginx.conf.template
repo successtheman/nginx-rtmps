@@ -16,6 +16,7 @@ rtmp {
             #cloudflare
             #twitch
             #kick
+            #streamplace
         }
         
         application instagram {
